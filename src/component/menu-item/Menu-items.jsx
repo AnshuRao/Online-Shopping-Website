@@ -8,9 +8,12 @@ export const Menu_Item =({title, imageUrl , size })=>{
         <div className={`${size} menu-item`}>
         
         <div className="background-image" 
-        style={{
+        style={
+            {
             backgroundImage: `url(${imageUrl})`
-        }}/>
+           
+        }
+        }/>
 
         <div className="content">
 
