@@ -15,7 +15,7 @@ const FormInput = ({ handleChange, label, ...otherInputProps }) => {
             
            form-input-label`}
         >
-       {console.log(otherInputProps.value.length)}
+       {/* {console.log(otherInputProps.value.length)} */}
           {label}
 
 

@@ -6,7 +6,6 @@ import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custome-button.component";
 import { signInWithGoogle } from "../../firebase/firebase-utils";
 
-
 class SignIN extends React.Component {
   constructor(props) {
     super(props);
@@ -20,9 +19,9 @@ class SignIN extends React.Component {
   };
 
   handleChange = (event) => {
-    const {
-      target: { name, value },
-    } = event;
+    const {  target: { name, value } } = event;
+   // console.log(event.target.type)
+    
     this.setState({ [name]: value });
   };
 
@@ -51,11 +50,12 @@ class SignIN extends React.Component {
             required
           />
           <div className="buttons">
-          <CustomButton type="submit">SIGN IN</CustomButton>
-          <CustomButton isGoogleSignIn onClick={signInWithGoogle}>SIGN IN WITH GOOGLE</CustomButton>
+            <CustomButton type="submit">SIGN IN</CustomButton>
+            <CustomButton isGoogleSignIn onClick={signInWithGoogle}>
+              SIGN IN WITH GOOGLE
+            </CustomButton>
           </div>
         </form>
-
       </div>
     );
   }
