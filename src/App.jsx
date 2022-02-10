@@ -50,12 +50,14 @@ class App extends React.Component {
     });
   }
   componentWillUnmount() {
+
     this.unsubscriptionFromAuth();
   }
 
   render() {
     return (
       <div className="App">
+      {console.log(this.unsubscriptionFromAuth)}
         <Header currentUser={this.state.currentUser} />
         <Switch>
           <Route exact path="/" component={HomePage} />

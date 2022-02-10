@@ -38,7 +38,7 @@ class SignUp extends React.Component {
             displayName: "",
             email: "",
             password: "",
-            confirmPassword: ""
+            confirmPassword: "" 
             
 
         })
