@@ -7,7 +7,7 @@ import './cart-icon.style.scss';
 import { connect } from "react-redux";
 import { toggleCartHidden } from "../../redux/cart/cart.action";
 import { selectCartItemsCount } from "../../redux/cart/cart.selector";
-
+ 
  const CartIcon = ({itemCount , toggleCartHidden})=> {
      
     return(
