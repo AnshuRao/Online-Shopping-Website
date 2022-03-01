@@ -1,30 +1,46 @@
-import React  from "react";
+import React from "react";
+import "./cart-dropdown.style.scss";
 
-import CustomButton from '../custom-button/custome-button.component';
-
-import './cart-dropdown.style.scss';
-
+import CustomButton from "../custom-button/custome-button.component";
 import CartItem from "../cart-item/cart-item.component";
+
+import { withRouter } from "react-router-dom";
 
 import { connect } from "react-redux";
 import { selectCartItems } from "../../redux/cart/cart.selector";
+import { toggleCartHidden } from "../../redux/cart/cart.action";
+//import { createStructuredSelector } from "reselect";
 
+const CartDropDown = ({ cartItems, history, toggleCartHidden }) => {
+  return (
+    <div className="cart-dropdown">
+      <div className="cart-items">
+        {cartItems.length ? (
+          cartItems.map((cartItem) => (
+            <CartItem key={cartItem.id} item={cartItem} />
+          ))
+        ) : (
+          <span className="empty-message">Your Cart is Empty</span>
+        )}
+      </div>
+      <CustomButton
+        onClick={() => {
+          history.push("/checkout");
+          toggleCartHidden();
+        }}
+      >
+        GO TO CHECKOUT
+      </CustomButton>
+    </div>
+  );
+};
 
-const CartDropDown = ({cartItems})=>{
-    return(
-        <div className="cart-dropdown">
-            <div className="cart-items">
-                {
-                    cartItems.map(cartItem=> <CartItem key={cartItem.id} item= {cartItem}/>)
-                }
-            </div>
-            <CustomButton>GO TO CHECKOUT</CustomButton>
-        </div>
-    )
-}
-
-const mapStateToProps =(state)=>({
-    cartItems : selectCartItems(state)
-})
-
-export default connect(mapStateToProps)(CartDropDown);
+const mapStateToProps = (state) => ({
+  cartItems: selectCartItems(state),
+});
+const mapDispatchToProps = (dispatch) => ({
+  toggleCartHidden: () => dispatch(toggleCartHidden()),
+});
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(CartDropDown)
+);
